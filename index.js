@@ -4,54 +4,46 @@ const inputNode = document.querySelector('.js-input');
 const btnNode = document.querySelector('.js-movie__btn-add');
 const listNode = document.querySelector('.js-list-movie');
 
-btnNode.addEventListener('click', function () {
-    const movie = getMovieFromUser();
-    if (!movie) {
+btnNode.addEventListener('click', function () {  
+    if (inputNode.value === '' ) {
         return;
-    }           
-    trackFilm(movie);
+    }    
+    const newMovie = {
+        title: inputNode.value,
+        watched: false,
+    }    
+    movieList.push(newMovie);
     renderList(movieList);
+
     clearInput();
 });
-
-function trackFilm(movie) {
-    movieList.push({ value: movie, checked: false, index: movieList.length });
-};
-
-function getMovieFromUser() {
-    if (inputNode.value === '' ) {
-        return null;
-    }
-    return inputNode.value;
-};
 
 function clearInput() {
     inputNode.value = '';
 };
 
-function renderList(movieList) {
+function renderList(movies) {
     let movieListHTML = '';
-
-    movieList.forEach((movie, index) => {
-        movieListHTML += `<li class='item-movie ${movie.checked ? 'checked' : ''}' data-index='${movie.index}'><input type="checkbox" class="checkbox" ${movie.checked ? 'checked' : ''}><p class='item-text'>${movie.value}</p><button class='delete-button' data-index='${movie.index}'><span class='line-btn1'></span> <span class='line-btn2'></span></button></li>`;
+    movies.forEach((movie, index) => {
+        movieListHTML += `<li class='item-movie ${movie.watched ? 'watched' : ''}' data-index="${index}"><input type="checkbox" class="checkbox" ${movie.watched ? 'checked' : ''}><p class='item-text '>${movie.title}</p><button class=' delete-button'><span class='line-btn1 ${movie.watched ? 'span-color' : ''}'></span> <span class='line-btn2 ${movie.watched ? 'span-color' : ''}'></span></button></li>`;
     });
-
     listNode.innerHTML = `<ul class='list-movie'>${movieListHTML}</ul> `;
     const deleteButtons = listNode.querySelectorAll('.delete-button');
+    const checkboxes = listNode.querySelectorAll('.checkbox');
+
     deleteButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const index = this.dataset.index;
+        button.addEventListener('click', function (event) {
+            const li = event.target.closest('li');
+            const index = li.dataset.index; 
             movieList.splice(index, 1); 
-            renderList(movieList); 
+            li.remove(); 
         });
     });
-    listNode.addEventListener('click', function (event) {
-        const target = event.target;
-        if (target.classList.contains('checkbox')) {
-            const listItem = target.closest('.item-movie');
-            const index = listItem.dataset.index;
-            movieList[index].checked = target.checked;
+
+    checkboxes.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function () {
+            movieList[index].watched = checkbox.checked;
             renderList(movieList);
-        }
+        });
     });
-}
+};

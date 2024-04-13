@@ -1,5 +1,6 @@
 body{
     font-family: "Arimo", sans-serif;
+    overflow-y: none;
 }
 .main{
     width: 100%;
@@ -59,6 +60,8 @@ body{
 }
 .movie-library__container{
     margin-left: 80px;
+    overflow-y: auto;
+    height: 500px;
 }
 .input{
     padding-left: 15px;
@@ -97,7 +100,7 @@ body{
     font-weight: 100;
     position: relative;
 }
-.checkbox{
+.checkbox { 
     margin-right: 50px;
     position: absolute;
     top: 26px;    
@@ -113,7 +116,7 @@ body{
 .checkbox:checked {
     background-color: #620080; 
 }
-.item-text{
+.item-text {
     padding-left: 50px;
 }
 .delete-button {
@@ -140,14 +143,16 @@ body{
     height: 4px;
     top: -4px;
 }
-.checked{
+.checked {
     background-color: #262626;
     text-decoration: line-through;
     color: #393939;
 }
-
-
-.delete-button.checked .line-btn1,
-.delete-button.checked .line-btn2 {
-    background-color: #393939; 
+.watched {
+    text-decoration: line-through;
+    color: rgb(54, 54, 54);
+    background-color: #1f1f1f;
+}
+.span-color{
+    background-color:rgb(54, 54, 54);
 }
