@@ -4,19 +4,32 @@ const inputNode = document.querySelector('.js-input');
 const btnNode = document.querySelector('.js-movie__btn-add');
 const listNode = document.querySelector('.js-list-movie');
 
-btnNode.addEventListener('click', function () {  
-    if (inputNode.value === '' ) {
-        return;
-    }    
-    const newMovie = {
-        title: inputNode.value,
-        watched: false,
-    }    
-    movieList.push(newMovie);
-    renderList(movieList);
-    clearInput();
-    console.log(movieList)
-});
+btnNode.addEventListener('click', addMovie);
+inputNode.addEventListener('keypress', pressEnterToAddMovie);
+
+
+
+function pressEnterToAddMovie(event) {
+    if (event.keyCode === 13) {
+        btnNode.click();
+    }
+};
+
+function addMovie() {
+    {  
+        if (inputNode.value === '' ) {
+            return;
+        }    
+        const newMovie = {
+            title: inputNode.value,
+            watched: false,
+        }    
+        movieList.push(newMovie);
+        renderList(movieList);
+        clearInput();
+        console.log(movieList)
+    }
+    };
 
 function clearInput() {
     inputNode.value = '';

@@ -114,7 +114,7 @@ body{
     -webkit-appearance: none;
 }
 .checkbox:checked {
-    background-color: #620080; 
+    background-color: #a900c0;; 
 }
 .item-text {
     padding-left: 50px;
@@ -155,4 +155,14 @@ body{
 }
 .span-color{
     background-color:rgb(54, 54, 54);
+}
+::-webkit-scrollbar {
+    width: 10px; 
+}
+::-webkit-scrollbar-track {
+    background: #505050; 
+}
+::-webkit-scrollbar-thumb {
+    background:  #a900c0;
+    border-radius: 5px;
 }
