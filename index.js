@@ -5,29 +5,30 @@ const btnNode = document.querySelector('.js-movie__btn-add');
 const listNode = document.querySelector('.js-list-movie');
 
 btnNode.addEventListener('click', addMovie);
-inputNode.addEventListener('keypress', pressEnterToAddMovie);
+inputNode.addEventListener('keydown', pressEnterToAddMovie);
 
 
 
 function pressEnterToAddMovie(event) {
-    if (event.keyCode === 13) {
+    if (event.code == 'Enter') {
         btnNode.click();
     }
 };
 
 function addMovie() {
     {  
-        if (inputNode.value === '' ) {
-            return;
-        }    
+        const title = inputNode.value.trim(); 
+        if (title === '') { 
+            return; 
+        }
         const newMovie = {
-            title: inputNode.value,
+            title: title,
             watched: false,
-        }    
+        } 
+
         movieList.push(newMovie);
         renderList(movieList);
         clearInput();
-        console.log(movieList)
     }
     };
 
