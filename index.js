@@ -5,15 +5,15 @@ const btnNode = document.querySelector('.js-movie__btn-add');
 const listNode = document.querySelector('.js-list-movie');
 
 btnNode.addEventListener('click', addMovie);
-inputNode.addEventListener('keydown', pressEnterToAddMovie);
+// inputNode.addEventListener('keydown', pressEnterToAddMovie);
 
 
 
-function pressEnterToAddMovie(event) {
-    if (event.code == 'Enter') {
-        btnNode.click();
-    }
-};
+// function pressEnterToAddMovie(event) {
+//     if (event.code == 'Enter') {
+//         btnNode.click();
+//     }
+// };
 
 function addMovie() {
     {  

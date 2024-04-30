@@ -19,8 +19,10 @@
 <h1 class="title">Посмотреть</h1>
 <div class="movie-library">
     <div class="movie-library__container">
+        <form onsubmit="event.preventDefault(); addMovie();">
 <input type="text" class="input js-input" placeholder="Добавить фильм">
  <button class="movie__btn-add js-movie__btn-add ">→</button>
+    </form>
 <div class="list-movie js-list-movie"></div>
 </div>
 </div>
